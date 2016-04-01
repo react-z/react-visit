@@ -1,26 +1,27 @@
-# react-router-redux-link
+# react-visit
 
 [![npm version](https://badge.fury.io/js/react-search.svg)](https://badge.fury.io/js/react-search)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
 ## Install
 
-`npm install react-router-redux-link --save`
+`npm install react-visit --save`
 
 ## Usage
 
 ```jsx
 import React, { Component } from 'react'
-import Link from 'react-router-redux-link'
-import { fetchAuthorData } from '../../actions/Author'
+import Visit from 'react-visit'
 
-class Author extends Component {
+class Test extends Component {
+
+  _visited () {
+    console.log('our test component is in view.')
+  }
 
   render() {
     return (
-    	<Link to={`/${this.props.path}`} linkAction={ () => fetchAuthorData(location.origin, this.props.path) } >
-          <p>this will link waiting for the redux action first</p>
-        </Link>
+      <Visit visited={this._visited.bind(this)} />
     )
   }
 }
