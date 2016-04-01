@@ -1,4 +1,3 @@
-import Link from './Link'
-import Navigate from './Navigate'
+import Visit from './Visit'
 
-module.exports = { Link, Navigate }
+module.exports = { Visit }
