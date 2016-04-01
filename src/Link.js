@@ -1,42 +1,47 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { browserHistory } from 'react-router'
-import { Navigate } from './Navigate'
+import React, { Component } from 'react';
 
-class Link extends Component {
+export default class Visit extends Component {
 
-  static get defaultProps () {
-    return {
-      linkAction: undefined,
-      onClick: function () {}
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      visited: false
     }
   }
 
-  navigate () {
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll.bind(this))
+  }
 
-    if(this.props.to === undefined){
-      console.error('Error: prop to is undefined, please define a to path and an optional action')
-      return
+  handleScroll (e) {
+    if(this.refs.visit != undefined){
+
+      if(this.isElementInViewport(this.refs.visit)){
+        if(this.state.visited){
+          /* already visited */
+        } else {
+          /* fire off event for element visited */
+          this.props.visited()
+          this.setState({ visited: true });
+        }
+      }
     }
+  }
 
-    if(this.props.linkAction === undefined){
-      browserHistory.push(this.props.to)
-    } else {
-      this.props.dispatch( fetchNavigate(this.props.linkAction, this.props.to) )
-    }
-    this.props.onClick()
-
+  isElementInViewport (el) {
+      var rect = el.getBoundingClientRect();
+      return (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
   }
 
   render() {
-    let style = { cursor: 'pointer' }
-
     return (
-      <a style={style} onClick={ () => this.navigate() }>
-        { this.props.children }
-      </a>
+    	<span ref='visit' />
     )
   }
 }
-
-export default connect()(Link)
