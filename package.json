@@ -1,19 +1,16 @@
 {
-  "name": "react-router-redux-link",
+  "name": "react-visit",
   "version": "0.0.1",
-  "description": "a react-router-redux link component for navigating to a new link after an action",
+  "description": "a react component that notifies when it is in view",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/StevenIseki/react-router-redux-link.git"
+    "url": "https://github.com/StevenIseki/react-visit.git"
   },
   "author": "Steven Iseki <stevenisekimartin@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "react": "^0.14.0",
-    "react-redux": "^4.3.0",
-    "react-router": "^2.0.0",
-    "react-router-redux": "^4.0.0"
+    "react": "^0.14.0"
   },
   "devDependencies": {
     "ava": "^0.3.0",
@@ -34,12 +31,10 @@
     "test": "ava test/*.js"
   },
   "keywords": [
-    "react-router-redux",
-    "react-router-redux-link",
     "react",
-    "react-router",
+    "react visit",
+    "react-visit",
     "reactjs",
-    "react-component",
-    "redux"
+    "react-component"
   ]
 }
