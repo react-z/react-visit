@@ -47,7 +47,8 @@ ReactDOM.render(<TestComponent />, document.getElementById('root'))
 
 ## Props
 
-- visited
+- `visited()``
+
 function to call when the component has been visited. This runs when the visit component is visible in the viewport.
 
 ## Development
