@@ -2,7 +2,7 @@
 
 a react component which notifies when it has been visited on the page
 
-[![npm version](https://badge.fury.io/js/react-search.svg)](https://badge.fury.io/js/react-search)
+[![npm version](https://badge.fury.io/js/react-visit.svg)](https://badge.fury.io/js/react-visit)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
 ## Install
