@@ -28,7 +28,7 @@ class TestComponent extends Component {
   render () {
 
     var divStyle = {
-      height: '100rem
+      height: '100rem'
     };
 
     return (
