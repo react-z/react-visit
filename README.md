@@ -28,7 +28,7 @@ class TestComponent extends Component {
   render () {
 
     var divStyle = {
-      height: '100rem
+      height: '100rem'
     };
 
     return (
@@ -47,7 +47,7 @@ ReactDOM.render(<TestComponent />, document.getElementById('root'))
 
 ## Props
 
-- `visited()``
+- `visited()`
 
 function to call when the component has been visited. This runs when the visit component is visible in the viewport.
 
