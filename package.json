@@ -1,6 +1,6 @@
 {
   "name": "react-visit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a react component that notifies when it is in view",
   "main": "lib/Visit.js",
   "repository": {
