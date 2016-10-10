@@ -13,18 +13,14 @@ test('Visit component', (t) => {
   }
 
   const component = shallow(<Visit />)
-  const wrapper = mount(<Visit visited={testVisit} />)
+  const wrapper = mount(<Visit onVisited={testVisit} />)
 
   t.equal(
     component.find('span').text(), '', 'the visit component has no text'
   )
 
-  t.pass(
-    expect(wrapper.props().visited).toEqual(testVisit)
-  )
-
   t.equal(
-    wrapper.props().visited, testVisit, 'the visit component has a visited prop'
+    wrapper.props().onVisited, testVisit, 'the visit component has an onVisited prop'
   )
 
   t.end()

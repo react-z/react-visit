@@ -2,46 +2,86 @@ import React, { Component } from 'react';
 
 export default class Visit extends Component {
 
-  constructor(props) {
-    super(props);
+  static get defaultProps () {
+     return {
+       visitStyle: { visibility: 'hidden' }
+     }
+   }
 
-    this.state = {
-      visited: false
-    }
-  }
+   static get propTypes () {
+     return {
+       containerElement: React.PropTypes.object,
+       onVisited: React.PropTypes.func,
+       visitStyle: React.PropTypes.object
+     }
+   }
 
-  componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll.bind(this))
-  }
+   constructor(props) {
+     super(props);
 
-  handleScroll (e) {
-    if(this.refs.visit != undefined){
+     this.handleScroll = this.handleScroll.bind(this)
+     this.state = { visited: false }
+   }
 
-      if(this.isElementInViewport(this.refs.visit)){
-        if(this.state.visited){
-          /* already visited */
-        } else {
-          /* fire off event for element visited */
-          this.props.visited()
-          this.setState({ visited: true });
-        }
-      }
-    }
-  }
+   containerElementDefined() {
+     return !(this.props.containerElement == null || this.props.containerElement == undefined)
+   }
 
-  isElementInViewport (el) {
-      var rect = el.getBoundingClientRect();
-      return (
-          rect.top >= 0 &&
-          rect.left >= 0 &&
-          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-      );
-  }
+   componentDidMount() {
+     if (this.containerElementDefined()) {
+       this.props.containerElement.addEventListener('scroll', this.handleScroll)
+     } else {
+       window.addEventListener('scroll', this.handleScroll)
+     }
+   }
 
-  render() {
-    return (
-    	<span ref='visit' />
-    )
-  }
+   componentWillUnmount() {
+     if (this.containerElementDefined()) {
+       this.props.containerElement.removeEventListener('scroll', this.handleScroll)
+     } else {
+       window.removeEventListener('scroll', this.handleScroll)
+     }
+   }
+
+   handleScroll (e) {
+     if(this.refs.visit != undefined){
+       if(this.isElementInViewport()){
+         if(this.state.visited){
+           /* already visited */
+         } else {
+           /* fire off event for element visited */
+           if(this.props.onVisited != undefined){
+             this.props.onVisited()
+           }
+           this.setState({ visited: true })
+         }
+       }
+     }
+   }
+
+   isElementInViewport () {
+     var rect = this.refs.visit.getBoundingClientRect()
+     let containerBottom = window.innerHeight
+     let containerRight = window.innerWidth
+     let containerTop = 0
+     let containerLeft = 0
+
+     if (this.containerElementDefined()) {
+       let containerRect = this.props.containerElement.getBoundingClientRect()
+       let containerBottom = containerRect.bottom
+       let containerRight = containerRect.right
+     }
+     return (
+         rect.top >= containerTop &&
+         rect.left >= containerLeft &&
+         rect.bottom <= containerBottom &&
+         rect.right <= containerRight
+     )
+ }
+
+ render() {
+   return (
+   	<span style={this.props.visitStyle} ref='visit' />
+   )
+ }
 }

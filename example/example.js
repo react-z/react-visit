@@ -1,25 +1,34 @@
-import Visit from '../lib/Visit'
+import Visit from '../src/Visit'
 import ReactDOM from 'react-dom'
 import React, { Component, PropTypes } from 'react'
 
 class TestComponent extends Component {
 
-  visited () {
+  handleVisit () {
     console.log('u visited me...')
   }
 
   render () {
 
+    let visitStyle = {
+       position: 'absolute',
+       backgroundColor: 'pink',
+       width: '100%',
+       bottom: '20rem',
+       height: '10rem'
+    }
+
     var divStyle = {
       height: '50rem',
       marginTop: '10rem',
-      marginBottom: '10rem',
-      backgroundColor: 'darkblue'
+      backgroundColor: 'darkblue',
+      position: 'relative'
     };
 
     return (
       <div style={divStyle}>
-        <Visit visited={ this.visited.bind(this) }  />
+        <Visit visitStyle={visitStyle}
+               onVisited={ () => this.handleVisit() }  />
       </div>
     )
   }

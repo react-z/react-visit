@@ -1,9 +1,8 @@
 # react-visit
 
-a react component which notifies when it has been visited on the page
+A react component which notifies when it has been visited on the page, used for infinite scrolling.
 
 [![npm version](https://badge.fury.io/js/react-visit.svg)](https://badge.fury.io/js/react-visit)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
 ## Install
 
@@ -11,45 +10,69 @@ a react component which notifies when it has been visited on the page
 
 ## Usage
 
-place visit component inside your componet, now you can detect when your component has been visited,
-and initiate some actions on visited event.
+Place the Visit component inside a container or component, and you can detect when your component has been visited,
+and initiate some actions on the visited event. This is useful for infinite scroll.
 
 ```jsx
+import Visit from 'react-visit'
 import ReactDOM from 'react-dom'
 import React, { Component, PropTypes } from 'react'
-import Visit from 'react-visit'
 
 class TestComponent extends Component {
 
-  visited () {
+  handleVisit () {
     console.log('u visited me...')
   }
 
   render () {
+    /*
+    Set a containerElement if you are scrolling in a container/modal
+    let containerElement = document.querySelector('.container')
+    */
+
+    let visitStyle = {
+       position: 'absolute',
+       visibility: 'hidden',
+       width: '100%',
+       marginTop: '-10rem',
+       height: '10rem'
+    }
 
     var divStyle = {
-      height: '100rem'
+      height: '50rem',
+      marginTop: '10rem',
+      backgroundColor: 'darkblue',
+      position: 'relative'
     };
 
     return (
       <div style={divStyle}>
-        <Visit visited={ this.visited.bind(this) }  />
+        { /* some items loaded with infinite scroll */}
+        <Visit visitStyle={visitStyle}
+               onVisited={ () => this.handleVisit() }  />
       </div>
     )
   }
 }
 
 ReactDOM.render(<TestComponent />, document.getElementById('root'))
-
 ```
 
 ## Versions
 
 ## Props
 
-- `visited()`
+- `onVisited()`
 
 function to call when the component has been visited. This runs when the visit component is visible in the viewport.
+
+- `visitStyle`
+
+Style object to display the visit component, usually you want the visit component hidden, but may want to give it a margin bottom or negative margin bottom margin so it will be triggered early in the case of infinite scroll.
+
+- `containerElement`
+
+The dom element to set the scroll event on, e.g. `document.querySelector('.container')`. If no containerElement is set react-visit will attach the scroll event to window, which is usually what you want unless in the case of a modal.
 
 ## Development
     npm install
