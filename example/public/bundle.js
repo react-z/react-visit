@@ -179,6 +179,15 @@
 	      return !(this.props.containerElement == null || this.props.containerElement == undefined);
 	    }
 	  }, {
+	    key: 'resetVisited',
+	    value: function resetVisited() {
+	      var _this2 = this;
+	
+	      setTimeout(function () {
+	        _this2.setState({ visited: false });
+	      }, 1000);
+	    }
+	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      if (this.containerElementDefined()) {
@@ -232,7 +241,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement('span', { style: this.props.visitStyle, ref: 'visit' });
+	      return _react2.default.createElement('span', { className: this.props.className, style: this.props.visitStyle, ref: 'visit' });
 	    }
 	  }]);
 	

@@ -74,6 +74,9 @@ Style object to display the visit component, usually you want the visit componen
 
 The dom element to set the scroll event on, e.g. `document.querySelector('.container')`. If no containerElement is set react-visit will attach the scroll event to window, which is usually what you want unless in the case of a modal.
 
+- `resetVisited`
+Public function on the component to call via refs e.g. `this.refs.visit.resetVisited()` if you want to reset the visited state so you can revisit the component, for example after scrolling has added more items.
+
 ## Development
     npm install
     npm run build

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 export default class Visit extends Component {
 
@@ -25,6 +25,12 @@ export default class Visit extends Component {
 
    containerElementDefined() {
      return !(this.props.containerElement == null || this.props.containerElement == undefined)
+   }
+
+   resetVisited() {
+     setTimeout( () => {
+       this.setState({ visited: false })
+     }, 1000)
    }
 
    componentDidMount() {
@@ -77,11 +83,11 @@ export default class Visit extends Component {
          rect.bottom <= containerBottom &&
          rect.right <= containerRight
      )
- }
+   }
 
- render() {
-   return (
-   	<span style={this.props.visitStyle} ref='visit' />
-   )
- }
+   render() {
+     return (
+       <span className={this.props.className} style={this.props.visitStyle} ref='visit' />
+    )
+  }
 }
