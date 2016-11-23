@@ -11,7 +11,8 @@ export default class Visit extends Component {
    static get propTypes () {
      return {
        containerElement: React.PropTypes.object,
-       onVisited: React.PropTypes.func,
+       onVisit: React.PropTypes.func,
+       onLeave: React.PropTypes.func,
        visitStyle: React.PropTypes.object
      }
    }
@@ -52,14 +53,18 @@ export default class Visit extends Component {
    handleScroll (e) {
      if(this.refs.visit != undefined){
        if(this.isElementInViewport()){
-         if(this.state.visited){
-           /* already visited */
-         } else {
+         /* in view */
+         if(!this.state.visited){
            /* fire off event for element visited */
-           if(this.props.onVisited != undefined){
-             this.props.onVisited()
-           }
+           if(this.props.onVisit != undefined){ this.props.onVisit() }
            this.setState({ visited: true })
+         }
+       } else {
+         /* not in view */
+         if(this.state.visited){
+           /* fire off event for element left */
+           if(this.props.onLeave != undefined){ this.props.onLeave() }
+           this.setState({ visited: false })
          }
        }
      }

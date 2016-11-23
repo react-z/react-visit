@@ -24,6 +24,10 @@ class TestComponent extends Component {
     console.log('u visited me...')
   }
 
+  handleLeave () {
+    console.log('u left me...')
+  }
+
   render () {
     /*
     Set a containerElement if you are scrolling in a container/modal
@@ -49,7 +53,8 @@ class TestComponent extends Component {
       <div style={divStyle}>
         { /* some items loaded with infinite scroll */}
         <Visit visitStyle={visitStyle}
-               onVisited={ () => this.handleVisit() }  />
+               onVisit={ () => this.handleVisit() }
+               onLeave={ () => this.handleLeave() } />
       </div>
     )
   }
@@ -62,9 +67,13 @@ ReactDOM.render(<TestComponent />, document.getElementById('root'))
 
 ## Props
 
-- `onVisited()`
+- `onVisit()`
 
 function to call when the component has been visited. This runs when the visit component is visible in the viewport.
+
+- `onLeave()`
+
+function to call when the component has been un-visited. This runs when the visit component is no longer visible in the viewport.
 
 - `visitStyle`
 

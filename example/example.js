@@ -8,6 +8,10 @@ class TestComponent extends Component {
     console.log('u visited me...')
   }
 
+  handleLeave () {
+    console.log('u left me...')
+  }
+
   render () {
 
     let visitStyle = {
@@ -19,7 +23,7 @@ class TestComponent extends Component {
     }
 
     var divStyle = {
-      height: '50rem',
+      height: '150rem',
       marginTop: '10rem',
       backgroundColor: 'darkblue',
       position: 'relative'
@@ -28,7 +32,8 @@ class TestComponent extends Component {
     return (
       <div style={divStyle}>
         <Visit visitStyle={visitStyle}
-               onVisited={ () => this.handleVisit() }  />
+               onVisit={ () => this.handleVisit() }
+               onLeave={ () => this.handleLeave() }  />
       </div>
     )
   }
