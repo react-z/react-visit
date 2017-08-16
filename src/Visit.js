@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 export default class Visit extends Component {
 
@@ -10,10 +11,10 @@ export default class Visit extends Component {
 
    static get propTypes () {
      return {
-       containerElement: React.PropTypes.object,
-       onVisit: React.PropTypes.func,
-       onLeave: React.PropTypes.func,
-       visitStyle: React.PropTypes.object
+       containerElement: PropTypes.object,
+       onVisit: PropTypes.func,
+       onLeave: PropTypes.func,
+       visitStyle: PropTypes.object
      }
    }
 
