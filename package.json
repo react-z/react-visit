@@ -1,6 +1,6 @@
 {
   "name": "react-visit",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A react component which notifies when it has been visited on the page, used for infinite scrolling",
   "main": "lib/Visit.js",
   "repository": {
