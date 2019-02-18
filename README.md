@@ -94,6 +94,7 @@ Public function on the component to call via refs e.g. `this.refs.visit.resetVis
 ## Build
     yarn
     npm run build
+    npm login
     npm version patch
     git add -A
     git push origin master
