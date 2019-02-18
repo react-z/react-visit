@@ -87,10 +87,9 @@ The dom element to set the scroll event on, e.g. `document.querySelector('.conta
 Public function on the component to call via refs e.g. `this.refs.visit.resetVisited()` if you want to reset the visited state so you can revisit the component, for example after scrolling has added more items.
 
 ## Development
-    npm install
-    npm run build
+    yarn
+    npm run dev
     npm test
-    npm start
 
 ## License
 

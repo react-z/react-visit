@@ -1,13 +1,10 @@
-import expect from 'expect'
 import test from 'tape'
 import React from 'react'
-import { shallow, mount } from 'enzyme'
-import { setupJsdom } from './jsdom'
 import Visit from '../src/Visit'
 
-test('Visit component', (t) => {
-  setupJsdom()
+import { shallow, mount } from 'enzyme'
 
+test('Visit component', (t) => {
   const testVisit = () => {
     console.log('just visiting...')
   }
