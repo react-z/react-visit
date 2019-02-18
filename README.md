@@ -91,6 +91,14 @@ Public function on the component to call via refs e.g. `this.refs.visit.resetVis
     npm run dev
     npm test
 
+## Build
+    yarn
+    npm run build
+    npm version patch
+    git add -A
+    git push origin master
+    npm publish
+
 ## License
 
 [MIT](http://isekivacenz.mit-license.org/)
