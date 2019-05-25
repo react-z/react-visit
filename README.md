@@ -88,12 +88,16 @@ Public function on the component to call via refs e.g. `this.refs.visit.resetVis
 
 ## Development
     yarn
-    npm run dev
-    npm test
+    yarn dev
+
+## Test
+    yarn test
 
 ## Build
     yarn
-    npm run build
+    yarn build
+
+## Publish
     npm login
     npm version patch
     git add -A
